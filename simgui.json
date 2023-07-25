@@ -1,13 +1,73 @@
 {
+  "HALProvider": {
+    "Encoders": {
+      "window": {
+        "visible": true
+      }
+    }
+  },
   "NTProvider": {
     "types": {
       "/FMSInfo": "FMSInfo",
-      "/SmartDashboard/Auto Selection": "String Chooser"
+      "/SmartDashboard/Akjkjtuo Balance": "Command",
+      "/SmartDashboard/Arm": "Subsystem",
+      "/SmartDashboard/Arm Move to (0) ": "Command",
+      "/SmartDashboard/Arm Move to (150) ": "Command",
+      "/SmartDashboard/Arm Move to (200) ": "Command",
+      "/SmartDashboard/Arm Move to (250) ": "Command",
+      "/SmartDashboard/Arm Move to (275) ": "Command",
+      "/SmartDashboard/ArmSubsystem": "Subsystem",
+      "/SmartDashboard/Auto Selection": "String Chooser",
+      "/SmartDashboard/AutoBalance PID Command": "Command",
+      "/SmartDashboard/Go to intake": "Command",
+      "/SmartDashboard/Intake Out": "Command",
+      "/SmartDashboard/Intake standing": "Command",
+      "/SmartDashboard/Lock Arm (Manual)": "Command",
+      "/SmartDashboard/Move arm to pos": "Command",
+      "/SmartDashboard/Reset Mag Enocder": "Command",
+      "/SmartDashboard/Rest Mode": "Command",
+      "/SmartDashboard/Rise Arm To High Angle": "Command",
+      "/SmartDashboard/Rise Arm To Mid Angle": "Command",
+      "/SmartDashboard/Score High": "Command",
+      "/SmartDashboard/Score Mid": "Command",
+      "/SmartDashboard/Unlock Arm (Manual)": "Command",
+      "/SmartDashboard/d": "Scheduler",
+      "/SmartDashboard/retract arm": "Command",
+      "/SmartDashboard/testHIGH2OUT": "Command",
+      "/SmartDashboard/testing to find intake": "Command"
+    },
+    "windows": {
+      "/FMSInfo": {
+        "window": {
+          "visible": true
+        }
+      },
+      "/SmartDashboard/Auto Selection": {
+        "window": {
+          "visible": true
+        }
+      },
+      "/SmartDashboard/Move arm to pos": {
+        "window": {
+          "visible": true
+        }
+      },
+      "/SmartDashboard/testing to find intake": {
+        "window": {
+          "visible": true
+        }
+      }
     }
   },
   "NetworkTables": {
     "transitory": {
       "SmartDashboard": {
+        "Akjkjtuo Balance": {
+          "open": true
+        },
+        "ArmSubsystem": {
+          "open": true
+        },
         "Auto Selection": {
           "open": true
         },
@@ -20,5 +80,8 @@
       "open": true
     },
     "visible": true
+  },
+  "NetworkTables View": {
+    "visible": false
   }
 }

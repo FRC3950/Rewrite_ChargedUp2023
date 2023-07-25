@@ -11,14 +11,16 @@ import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import frc.lib.util.COTSFalconSwerveConstants;
 import frc.lib.util.SwerveModuleConstants;
 
 public final class Constants {
     public static final double stickDeadband = 0.1;
 
-    public static final class Swerve {
-        public static final int pigeonID = 12;
+    public static final class kSwerve {
+        public static final int pigeonID = 22;
         public static final boolean invertGyro = false; // Always ensure Gyro is CCW+ CW-
 
         public static final COTSFalconSwerveConstants chosenModule =  //TODO: This must be tuned to specific robot
@@ -96,39 +98,39 @@ public final class Constants {
         /* Front Left Module - Module 0 */
         public static final class Mod0 { //TODO: This must be tuned to specific robot
             public static final int driveMotorID = 1;
-            public static final int angleMotorID = 2;
-            public static final int canCoderID = 40;
-            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(189.9);
+            public static final int angleMotorID = 0;
+            public static final int canCoderID = 50;
+            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(191.337);
             public static final SwerveModuleConstants constants = 
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }
 
         /* Front Right Module - Module 1 */
         public static final class Mod1 { //TODO: This must be tuned to specific robot
-            public static final int driveMotorID = 3;
-            public static final int angleMotorID = 4;
-            public static final int canCoderID = 18;
-            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(148.7);
+            public static final int driveMotorID = 19;
+            public static final int angleMotorID = 18;
+            public static final int canCoderID = 51;
+            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(147.04);
             public static final SwerveModuleConstants constants = 
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }
         
         /* Back Left Module - Module 2 */
         public static final class Mod2 { //TODO: This must be tuned to specific robot
-            public static final int driveMotorID = 9;
-            public static final int angleMotorID = 6;
-            public static final int canCoderID = 23;
-            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(139.5);
+            public static final int driveMotorID = 2;
+            public static final int angleMotorID = 3;
+            public static final int canCoderID = 52;
+            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(139.04);
             public static final SwerveModuleConstants constants = 
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }
 
         /* Back Right Module - Module 3 */
         public static final class Mod3 { //TODO: This must be tuned to specific robot
-            public static final int driveMotorID = 7;
-            public static final int angleMotorID = 8;
-            public static final int canCoderID = 32;
-            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(275.2);
+            public static final int driveMotorID = 17;
+            public static final int angleMotorID = 16;
+            public static final int canCoderID = 53;
+            public static final Rotation2d angleOffset = Rotation2d.fromDegrees(272.54);
             public static final SwerveModuleConstants constants = 
                 new SwerveModuleConstants(driveMotorID, angleMotorID, canCoderID, angleOffset);
         }
@@ -140,9 +142,9 @@ public final class Constants {
         public static final double kMaxAngularSpeedRadiansPerSecond = Math.PI;
         public static final double kMaxAngularSpeedRadiansPerSecondSquared = Math.PI;
     
-        public static final double kPXController = 1;
-        public static final double kPYController = 1;
-        public static final double kPThetaController = 1;
+        public static final double kPXController = 1.75;
+        public static final double kPYController = 1.5;
+        public static final double kPThetaController = 4;
     
         /* Constraint for the motion profilied robot angle controller */
         public static final TrapezoidProfile.Constraints kThetaControllerConstraints =
@@ -163,5 +165,81 @@ public final class Constants {
             new PathPoint(new Translation2d(0, 0.0), Rotation2d.fromDegrees(0), Rotation2d.fromDegrees(0)), // position, heading(direction of travel), holonomic rotation
             new PathPoint(new Translation2d(0.0, -0.5588), Rotation2d.fromDegrees(0), Rotation2d.fromDegrees(0)) // position, heading(direction of travel), holonomic rotation
         );
+
+        public static final  PathPlannerTrajectory two_Meter_East = PathPlanner.generatePath(
+            new PathConstraints(3, 3), 
+            new PathPoint(new Translation2d(0, 0.0), Rotation2d.fromDegrees(0), Rotation2d.fromDegrees(0)), // position, heading(direction of travel), holonomic rotation
+            new PathPoint(new Translation2d(2.0, 0.0), Rotation2d.fromDegrees(0), Rotation2d.fromDegrees(0)) // position, heading(direction of travel), holonomic rotation
+        );
+
+        public static final  PathPlannerTrajectory two_Meter_South = PathPlanner.generatePath(
+            new PathConstraints(3, 3), 
+            new PathPoint(new Translation2d(0, 0.0), Rotation2d.fromDegrees(0), Rotation2d.fromDegrees(0)), // position, heading(direction of travel), holonomic rotation
+            new PathPoint(new Translation2d(0.0, -2.0), Rotation2d.fromDegrees(0), Rotation2d.fromDegrees(0)) // position, heading(direction of travel), holonomic rotation
+        ); 
+
+        public static final  PathPlannerTrajectory Left_90 = PathPlanner.generatePath(
+            new PathConstraints(3, 2), 
+            new PathPoint(new Translation2d(0, 0.0), Rotation2d.fromDegrees(0), Rotation2d.fromDegrees(0)), // position, heading(direction of travel), holonomic rotation
+            new PathPoint(new Translation2d(0.0, 0.0), Rotation2d.fromDegrees(0), Rotation2d.fromDegrees(90)) // position, heading(direction of travel), holonomic rotation
+        );
+
+        public static final  PathPlannerTrajectory Left_180 = PathPlanner.generatePath(
+            new PathConstraints(3, 2), 
+            new PathPoint(new Translation2d(0, 0.0), Rotation2d.fromDegrees(0), Rotation2d.fromDegrees(0)), // position, heading(direction of travel), holonomic rotation
+            new PathPoint(new Translation2d(0.0, 0.0), Rotation2d.fromDegrees(0), Rotation2d.fromDegrees(180)) // position, heading(direction of travel), holonomic rotation
+        );
     }
+
+    public static abstract class kIntake{
+
+        public static final int wrist = 14; //FIXME
+        public static final int encoderLimit = 90000; //FIXME (value can be calculated)
+
+        //Intake Motors
+        public static final int upperID = 13; 
+        public static final int lowerID = 15; 
+
+        //Solenoid
+        public static final int forward = 4; 
+        public static final int reverse = 5; 
+
+        public static final Value RETRACTED = Value.kReverse;
+        public static final Value EXTENDED = Value.kForward;
+        
+    }
+
+    public static abstract class kTelescope{
+
+        public static final int leader = 12; //FIXME
+
+
+        public static final int forward = 0; //FIXME
+        public static final int reverse = 1; //FIXME
+
+        public static final int kGearReduction = 25;
+        public static final double kGearCircumference = Math.PI * 4.0; //CM //FIXME
+        public static final double telescopeLength = 45; //CM //FIXME
+        public static final double encoderLimit = (telescopeLength / kGearCircumference) * 4096 * kGearReduction;
+
+
+        
+    }
+
+    public static abstract class kArm{
+
+        public static final int LowerArm = 4;
+        public static final int UpperArm = 5;
+
+    }
+
+    public static abstract class kLock{
+
+        public static final int closed = 2;
+        public static final int open = 3;
+
+    }
+    
+
+    
 }
